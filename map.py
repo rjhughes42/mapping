@@ -28,6 +28,8 @@ lat = list(data["LAT"])
 for lt,ln,vn,vs,ve,vt in zip(lat,lon,vol_name,vol_status,vol_elev,vol_type):
     
     fg.add_child(folium.CircleMarker(location=[lt,ln], radius=6, popup= "Name: {}\nStatus: {}\nElevation: {}m \nType: {}".format(vn,vs,ve,vt), fill_color=elev_color(ve), color="gray", fill_opacity=0.7))
+
+fg.add_child(folium.GeoJson(data=(open('world.json','r', encoding='utf-8-sig').read())))    
 map.add_child(fg)
 
 map.save("Map1.html")
